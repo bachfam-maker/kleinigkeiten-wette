@@ -1,0 +1,64 @@
+name: Vorlagen eintragen
+
+on:
+  workflow_dispatch:
+    inputs:
+      spieler:
+        description: "BVB-Spieler, z. B. Julian Brandt"
+        required: true
+        type: string
+      vorlagen:
+        description: "Vorlagen in dieser Saison INSGESAMT"
+        required: true
+        type: string
+      spieltag:
+        description: "Bis zu welchem Bundesliga-Spieltag gepflegt?"
+        required: true
+        type: string
+      loeschen:
+        description: "Spieler stattdessen entfernen"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stand
+  cancel-in-progress: false
+
+jobs:
+  eintragen:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository holen
+        uses: actions/checkout@v4
+
+      - name: Python bereitstellen
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Eintrag speichern
+        env:
+          SPIELER: ${{ inputs.spieler }}
+          VORLAGEN: ${{ inputs.vorlagen }}
+          SPIELTAG: ${{ inputs.spieltag }}
+          LOESCHEN: ${{ inputs.loeschen }}
+        run: python scripts/vorlagen.py
+
+      - name: Stand neu berechnen
+        run: python scripts/update.py
+
+      - name: Ergebnis einchecken
+        run: |
+          git config user.name  "kleinigkeiten-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/manual.json data.json
+          if git diff --cached --quiet; then
+            echo "Keine Aenderung."
+            exit 0
+          fi
+          git commit -m "Vorlagen: ${{ inputs.spieler }} (Spieltag ${{ inputs.spieltag }})"
+          git push
