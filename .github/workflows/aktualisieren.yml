@@ -38,7 +38,7 @@ jobs:
       - name: Daten abrufen und rechnen
         run: python scripts/update.py
 
-      -- name: Ergebnis einchecken
+      - name: Ergebnis einchecken
         run: |
           git config user.name  "kleinigkeiten-bot"
           git config user.email "actions@users.noreply.github.com"
