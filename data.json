@@ -1,5 +1,5 @@
 {
-  "generiert": "2026-08-07T21:11:23+00:00",
+  "generiert": "2026-08-07T21:13:24+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
@@ -36,13 +36,13 @@
       {
         "name": "Ryerson",
         "tore": 0,
-        "vorlagen": 3,
-        "roh": 3,
-        "wert": 3.4,
+        "vorlagen": 12,
+        "roh": 12,
+        "wert": 13.4,
         "zaehlt": true
       }
     ],
-    "punkte": 3.4,
+    "punkte": 13.4,
     "lage": "hinten"
   },
   "hendrik": {
@@ -82,6 +82,6 @@
     "punkte": 18.0,
     "lage": "vorne"
   },
-  "differenz": 14.6,
-  "vorlagen_stand": 1
+  "differenz": 4.6,
+  "vorlagen_stand": 15
 }
