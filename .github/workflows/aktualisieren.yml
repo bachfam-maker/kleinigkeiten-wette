@@ -29,12 +29,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Dateien anzeigen
-        run: |
-          echo "===== Inhalt des Repositories ====="
-          ls -R
-          echo "===== Ende ====="
-
       - name: Daten abrufen und rechnen
         run: python scripts/update.py
 
