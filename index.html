@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kleinigkeiten-Wette</title>
+<meta name="description" content="Marvin gegen Hendrik, Saison 2026/27. Live-Stand der Duell-Wette und der Trikot-Wette.">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#1B0020;
+    --flaeche:#2A0031;
+    --flaeche-hoch:#37003C;
+    --linie:rgba(255,255,255,.11);
+    --linie-stark:rgba(255,255,255,.22);
+    --tinte:#FFFFFF;
+    --gedaempft:rgba(255,255,255,.54);
+    --leise:rgba(255,255,255,.34);
+
+    --cyan:#04F5FF;
+    --gruen:#00FF87;
+    --pink:#FF2882;
+    --gelb:#EAFF04;
+
+    --marvin:var(--gelb);
+    --hendrik:var(--pink);
+
+    --rand:14px;
+    --spalte:1180px;
+
+    --display:"Archivo",system-ui,sans-serif;
+    --text:"IBM Plex Sans",system-ui,sans-serif;
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--tinte);
+    font-family:var(--text);
+    font-size:16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    font-variant-numeric:tabular-nums;
+  }
+  .huelle{max-width:var(--spalte);margin:0 auto;padding:32px 20px 72px}
+
+  /* ---------------------------------------------------------- Kopf */
+  .kopf{
+    display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
+    gap:8px 24px;padding-bottom:20px;border-bottom:1px solid var(--linie);
+  }
+  .wortmarke{
+    font-family:var(--display);font-weight:800;font-size:clamp(20px,3.4vw,26px);
+    letter-spacing:-.02em;line-height:1;margin:0;
+  }
+  .wortmarke em{font-style:normal;color:var(--cyan)}
+  .kopf-meta{font-size:13px;color:var(--gedaempft)}
+  .kopf-meta b{color:var(--tinte);font-weight:500}
+
+  /* ---------------------------------------------------------- Bausteine */
+  .augenbraue{
+    font-family:var(--display);font-weight:600;font-size:11px;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--leise);
+    margin:0 0 6px;
+  }
+  section{margin-top:44px}
+  .titel{
+    font-family:var(--display);font-weight:800;letter-spacing:-.02em;
+    font-size:clamp(26px,5vw,40px);line-height:1.04;margin:0;
+  }
+
+  /* ---------------------------------------------------------- Trikot-Wette */
+  .trikot-kopf{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px}
+  .quote{
+    display:flex;align-items:baseline;gap:12px;
+  }
+  .quote-zahl{
+    font-family:var(--display);font-weight:800;letter-spacing:-.035em;
+    font-size:clamp(52px,12vw,88px);line-height:.86;color:var(--cyan);
+  }
+  .quote-zahl span{font-size:.4em;letter-spacing:0;margin-left:.08em}
+  .quote-delta{font-size:13px;color:var(--gedaempft);padding-bottom:.5em}
+  .quote-delta.hoch{color:var(--gruen)}
+  .quote-delta.runter{color:var(--pink)}
+
+  .balken{
+    position:relative;height:8px;margin-top:22px;
+    background:var(--flaeche);border-radius:99px;overflow:hidden;
+  }
+  .balken-fuellung{
+    position:absolute;inset:0 auto 0 0;width:10%;
+    background:var(--cyan);border-radius:99px;
+    transition:width .6s cubic-bezier(.2,.7,.2,1);
+  }
+  .balken-start{
+    position:absolute;top:-5px;bottom:-5px;left:10%;width:1px;
+    background:var(--linie-stark);
+  }
+  .balken-skala{
+    display:flex;justify-content:space-between;
+    margin-top:8px;font-size:11px;color:var(--leise);
+  }
+
+  .fakten{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:1px;margin:26px 0 0;padding:0;background:var(--linie);
+    border:1px solid var(--linie);border-radius:var(--rand);overflow:hidden;
+  }
+  .fakt{background:var(--bg);padding:14px 16px}
+  .fakt dt{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--leise);margin:0 0 4px}
+  .fakt dd{margin:0;font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.01em}
+
+  /* ---------------------------------------------------------- Zugseil */
+  .zugseil{
+    display:grid;grid-template-columns:minmax(96px,168px) 1fr minmax(96px,168px);
+    align-items:end;gap:clamp(12px,3vw,32px);margin-top:26px;
+  }
+  .figur{width:100%;height:clamp(112px,20vw,168px);object-fit:contain;object-position:bottom center;display:block}
+  .figur.links{object-position:bottom left}
+  .figur.rechts{object-position:bottom right}
+
+  .seil{padding-bottom:14px}
+  .seil-spur{
+    position:relative;height:10px;border-radius:99px;
+    background:var(--flaeche);overflow:hidden;
+  }
+  .seil-zone{
+    position:absolute;top:0;bottom:0;left:35%;width:30%;
+    background:rgba(255,255,255,.09);
+  }
+  .seil-fuellung{
+    position:absolute;top:0;bottom:0;left:50%;width:0;
+    background:var(--cyan);
+    transition:left .6s cubic-bezier(.2,.7,.2,1),width .6s cubic-bezier(.2,.7,.2,1);
+  }
+  .seil-mitte{position:absolute;top:-4px;bottom:-4px;left:50%;width:1px;background:var(--linie-stark)}
+  .seil-beschriftung{
+    display:flex;justify-content:space-between;margin-top:9px;
+    font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--leise);
+  }
+  .urteil{
+    text-align:center;margin-top:14px;
+    font-family:var(--display);font-weight:600;font-size:clamp(15px,2.6vw,19px);
+    letter-spacing:-.01em;
+  }
+  .urteil b{font-weight:800}
+
+  /* ---------------------------------------------------------- Seiten */
+  .seiten{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linie);
+          border:1px solid var(--linie);border-radius:var(--rand);overflow:hidden;margin-top:30px}
+  .seite{background:var(--bg);padding:22px 20px 24px;min-width:0}
+  .seite-kopf{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .seite-name{
+    font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.02em;margin:0;
+  }
+  .seite.m .seite-name{color:var(--marvin)}
+  .seite.h .seite-name{color:var(--hendrik)}
+  .seite-liga{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--leise)}
+  .seite-summe{
+    font-family:var(--display);font-weight:800;letter-spacing:-.035em;
+    font-size:clamp(38px,7vw,54px);line-height:1;margin:12px 0 2px;
+  }
+  .seite-summe small{font-size:.3em;letter-spacing:.12em;text-transform:uppercase;
+                     color:var(--leise);font-weight:600;margin-left:.5em;vertical-align:.9em}
+
+  .block{margin-top:22px}
+  .block-titel{
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--leise);
+    padding-bottom:8px;border-bottom:1px solid var(--linie);margin-bottom:2px;
+  }
+  .zeile{
+    display:grid;grid-template-columns:1fr auto auto;align-items:baseline;
+    gap:10px;padding:10px 0;border-bottom:1px solid var(--linie);
+  }
+  .zeile:last-child{border-bottom:0}
+  .zeile-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
+  .zeile-roh{font-size:12px;color:var(--gedaempft);white-space:nowrap}
+  .zeile-wert{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.01em;white-space:nowrap}
+  .seite.m .zeile-wert{color:var(--marvin)}
+  .seite.h .zeile-wert{color:var(--hendrik)}
+  .zeile.aus{opacity:.34}
+  .zeile.aus .zeile-wert{color:var(--tinte)}
+  .zeile.leer{color:var(--leise);font-size:13px;display:block}
+  .block-titel{line-height:1.5}
+
+  /* ---------------------------------------------------------- Fuss */
+  .fuss{
+    margin-top:52px;padding-top:20px;border-top:1px solid var(--linie);
+    font-size:12.5px;color:var(--leise);display:grid;gap:6px;
+  }
+  .fuss b{color:var(--gedaempft);font-weight:500}
+  .warnung{color:var(--gelb)}
+
+  .laedt{color:var(--leise);font-size:14px;padding:40px 0}
+  .fehler{
+    border:1px solid var(--pink);border-radius:var(--rand);
+    padding:16px 18px;margin-top:24px;font-size:14px;
+  }
+  .fehler b{display:block;font-family:var(--display);margin-bottom:4px}
+
+  @media (max-width:720px){
+    .huelle{padding:24px 16px 56px}
+    .seiten{grid-template-columns:1fr}
+    .zugseil{grid-template-columns:1fr 1fr;grid-template-areas:"m h" "s s";gap:10px}
+    .fig-m{grid-area:m}.fig-h{grid-area:h}.seil{grid-area:s;padding-top:6px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important}
+  }
+  a{color:var(--cyan)}
+  :focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+</style>
+</head>
+<body>
+<div class="huelle">
+
+  <header class="kopf">
+    <h1 class="wortmarke">Kleinigkeiten<em>-Wette</em></h1>
+    <div class="kopf-meta" id="kopfMeta">Saison 2026/27</div>
+  </header>
+
+  <div id="inhalt" class="laedt">Stand wird geladen …</div>
+
+  <template id="vorlage">
+    <section aria-labelledby="t-trikot">
+      <p class="augenbraue">Trikot-Wette</p>
+      <div class="trikot-kopf">
+        <h2 class="titel" id="t-trikot">Chelsea wird Meister</h2>
+        <div class="quote">
+          <div class="quote-zahl" id="quoteZahl">–<span>%</span></div>
+          <div class="quote-delta" id="quoteDelta"></div>
+        </div>
+      </div>
+      <div class="balken">
+        <div class="balken-fuellung" id="balkenFuellung"></div>
+        <div class="balken-start" id="balkenStart"></div>
+      </div>
+      <div class="balken-skala"><span>0 %</span><span>Startwert 10 %</span><span>100 %</span></div>
+      <dl class="fakten" id="fakten"></dl>
+    </section>
+
+    <section aria-labelledby="t-duell">
+      <p class="augenbraue">Duell-Wette</p>
+      <h2 class="titel" id="t-duell">Marvin gegen Hendrik</h2>
+
+      <div class="zugseil">
+        <img class="figur links fig-m" id="figurMarvin" alt="" width="512" height="512">
+        <div class="seil">
+          <div class="seil-spur" role="img" id="seilBild">
+            <div class="seil-zone"></div>
+            <div class="seil-fuellung" id="seilFuellung"></div>
+            <div class="seil-mitte"></div>
+          </div>
+          <div class="seil-beschriftung"><span>Marvin</span><span>±3 = knapp</span><span>Hendrik</span></div>
+          <p class="urteil" id="urteil"></p>
+        </div>
+        <img class="figur rechts fig-h" id="figurHendrik" alt="" width="512" height="512">
+      </div>
+
+      <div class="seiten">
+        <article class="seite m" id="seiteMarvin"></article>
+        <article class="seite h" id="seiteHendrik"></article>
+      </div>
+    </section>
+
+    <footer class="fuss" id="fuss"></footer>
+  </template>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var ZAHL1 = new Intl.NumberFormat("de-DE",{minimumFractionDigits:1,maximumFractionDigits:1});
+  var ZAHL0 = new Intl.NumberFormat("de-DE",{maximumFractionDigits:0});
+  var ZEIT  = new Intl.DateTimeFormat("de-DE",{
+    day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit",
+    timeZone:"Europe/Berlin"
+  });
+
+  var SEIL_SPANNE = 10;   // Punkte, ab denen der Balken voll ausschlaegt
+  var ZONE = 3;           // Schwelle fuer "knapp"
+
+  function el(id){ return document.getElementById(id); }
+
+  function zeigeFehler(text){
+    var ziel = el("inhalt");
+    ziel.className = "";
+    ziel.innerHTML = "";
+    var kasten = document.createElement("div");
+    kasten.className = "fehler";
+    var kopf = document.createElement("b");
+    kopf.textContent = "Stand nicht ladbar";
+    kasten.appendChild(kopf);
+    kasten.appendChild(document.createTextNode(text));
+    ziel.appendChild(kasten);
+  }
+
+  function fakt(liste, bezeichnung, wert){
+    var huelle = document.createElement("div");
+    huelle.className = "fakt";
+    var dt = document.createElement("dt");
+    dt.textContent = bezeichnung;
+    var dd = document.createElement("dd");
+    dd.textContent = wert;
+    huelle.appendChild(dt); huelle.appendChild(dd);
+    liste.appendChild(huelle);
+  }
+
+  function zeile(name, roh, wert, ausgegraut){
+    var reihe = document.createElement("div");
+    reihe.className = "zeile" + (ausgegraut ? " aus" : "");
+    var a = document.createElement("span"); a.className = "zeile-name"; a.textContent = name;
+    var b = document.createElement("span"); b.className = "zeile-roh";  b.textContent = roh;
+    var c = document.createElement("span"); c.className = "zeile-wert"; c.textContent = ZAHL1.format(wert);
+    reihe.appendChild(a); reihe.appendChild(b); reihe.appendChild(c);
+    return reihe;
+  }
+
+  function baueSeite(ziel, person, daten, faktorHinweis){
+    ziel.innerHTML = "";
+
+    var kopf = document.createElement("div"); kopf.className = "seite-kopf";
+    var name = document.createElement("h3"); name.className = "seite-name"; name.textContent = person;
+    var liga = document.createElement("span"); liga.className = "seite-liga";
+    liga.textContent = daten.liga + " · " + daten.verein;
+    kopf.appendChild(name); kopf.appendChild(liga);
+    ziel.appendChild(kopf);
+
+    var summe = document.createElement("div"); summe.className = "seite-summe";
+    summe.textContent = ZAHL1.format(daten.punkte);
+    var klein = document.createElement("small"); klein.textContent = "Punkte";
+    summe.appendChild(klein);
+    ziel.appendChild(summe);
+
+    // Stuermer
+    var b1 = document.createElement("div"); b1.className = "block";
+    var t1 = document.createElement("div"); t1.className = "block-titel";
+    t1.textContent = "Torschütze" + (faktorHinweis ? " · ×1,1176" : "");
+    b1.appendChild(t1);
+    b1.appendChild(zeile(
+      daten.stuermer.name,
+      ZAHL0.format(daten.stuermer.tore) + " Tore",
+      daten.stuermer.wert,
+      false
+    ));
+    ziel.appendChild(b1);
+
+    // Scorer
+    var b2 = document.createElement("div"); b2.className = "block";
+    var t2 = document.createElement("div"); t2.className = "block-titel";
+    var kurz = daten.verein.replace("Borussia Dortmund","BVB").replace("Liverpool","LFC");
+    t2.textContent = "Bester Scorer " + kurz + " · ohne " + daten.stuermer.name
+                     + (faktorHinweis ? " · ×1,1176" : "");
+    b2.appendChild(t2);
+
+    if(!daten.scorer.length){
+      var leer = document.createElement("div");
+      leer.className = "zeile leer";
+      leer.textContent = "Noch keine Scorerpunkte in dieser Saison.";
+      b2.appendChild(leer);
+    } else {
+      daten.scorer.forEach(function(eintrag){
+        b2.appendChild(zeile(
+          eintrag.name,
+          ZAHL0.format(eintrag.tore) + " T · " + ZAHL0.format(eintrag.vorlagen) + " V",
+          eintrag.wert,
+          !eintrag.zaehlt
+        ));
+      });
+    }
+    ziel.appendChild(b2);
+  }
+
+  function zeichne(d){
+    var inhalt = el("inhalt");
+    inhalt.className = "";
+    inhalt.innerHTML = "";
+    inhalt.appendChild(el("vorlage").content.cloneNode(true));
+
+    var gestartet = (d.ligen.pl.spieltag > 0 || d.ligen.bl.spieltag > 0);
+
+    el("kopfMeta").innerHTML = "";
+    el("kopfMeta").appendChild(document.createTextNode("Saison " + d.saison + " · Stand "));
+    var b = document.createElement("b");
+    b.textContent = ZEIT.format(new Date(d.generiert));
+    el("kopfMeta").appendChild(b);
+
+    // ---- Trikot-Wette
+    var p = d.trikot.wahrscheinlichkeit;
+    el("quoteZahl").firstChild.textContent = ZAHL1.format(p);
+    el("balkenFuellung").style.width = Math.max(Math.min(p,100),0) + "%";
+    el("balkenStart").style.left = d.trikot.startwert + "%";
+
+    var delta = Math.round((p - d.trikot.startwert) * 10) / 10;
+    var deltaFeld = el("quoteDelta");
+    deltaFeld.className = "quote-delta";
+    if(!gestartet){
+      deltaFeld.textContent = "Startwert, Saison läuft noch nicht";
+    } else if(Math.abs(delta) < 0.05){
+      deltaFeld.textContent = "unverändert gegenüber dem Startwert";
+    } else {
+      deltaFeld.textContent = (delta > 0 ? "+" : "−") + ZAHL1.format(Math.abs(delta))
+                              + " Punkte gegenüber dem Startwert";
+      deltaFeld.className = "quote-delta " + (delta > 0 ? "hoch" : "runter");
+    }
+
+    var fakten = el("fakten");
+    if(gestartet && d.trikot.spiele > 0){
+      fakt(fakten, "Tabellenplatz", d.trikot.platz != null ? d.trikot.platz + "." : "–");
+      fakt(fakten, "Punkte", ZAHL0.format(d.trikot.punkte));
+      fakt(fakten, "Rückstand",
+           d.trikot.rueckstand === 0 ? "Spitze"
+           : (d.trikot.rueckstand != null ? ZAHL0.format(d.trikot.rueckstand) + " auf " + d.trikot.spitzenreiter : "–"));
+      fakt(fakten, "Spiele", d.trikot.spiele + " von " + d.ligen.pl.gesamt);
+    } else {
+      fakt(fakten, "Status", "Vor dem 1. Spieltag");
+      fakt(fakten, "Startwert", ZAHL1.format(d.trikot.startwert) + " %");
+    }
+
+    // ---- Duell
+    baueSeite(el("seiteMarvin"), "Marvin", d.marvin, true);
+    baueSeite(el("seiteHendrik"), "Hendrik", d.hendrik, false);
+
+    var diff = d.differenz;
+    var anteil = Math.max(Math.min(diff / SEIL_SPANNE, 1), -1) * 50;
+    var fuellung = el("seilFuellung");
+    fuellung.style.left = (anteil >= 0 ? 50 : 50 + anteil) + "%";
+    fuellung.style.width = Math.abs(anteil) + "%";
+    fuellung.style.background = diff > 0 ? "var(--hendrik)"
+                              : (diff < 0 ? "var(--marvin)" : "var(--linie-stark)");
+
+    var urteil = el("urteil");
+    urteil.innerHTML = "";
+    if(!gestartet){
+      urteil.textContent = "Die Saison hat noch nicht begonnen.";
+    } else if(Math.abs(diff) < 0.05){
+      urteil.textContent = "Gleichstand.";
+    } else {
+      var fuehrend = diff > 0 ? "Hendrik" : "Marvin";
+      var stark = document.createElement("b");
+      stark.textContent = fuehrend + " führt";
+      urteil.appendChild(stark);
+      urteil.appendChild(document.createTextNode(
+        " mit " + ZAHL1.format(Math.abs(diff)) + " Punkten"
+        + (Math.abs(diff) <= ZONE ? " – noch in der knappen Zone." : ".")
+      ));
+    }
+    el("seilBild").setAttribute("aria-label",
+      "Marvin " + ZAHL1.format(d.marvin.punkte) + " Punkte, Hendrik " + ZAHL1.format(d.hendrik.punkte) + " Punkte.");
+
+    var figurM = el("figurMarvin");
+    figurM.src = "assets/avatars/Marvin_" + d.marvin.lage + ".png";
+    figurM.alt = "Marvin liegt " + d.marvin.lage;
+    var figurH = el("figurHendrik");
+    figurH.src = "assets/avatars/Hendrik_" + d.hendrik.lage + ".png";
+    figurH.alt = "Hendrik liegt " + d.hendrik.lage;
+
+    // ---- Fuss
+    var fuss = el("fuss");
+    fuss.innerHTML = "";
+
+    var z1 = document.createElement("div");
+    z1.innerHTML = "Spieltage: <b>Bundesliga " + d.ligen.bl.spieltag + " von " + d.ligen.bl.gesamt
+                 + "</b> · <b>Premier League " + d.ligen.pl.spieltag + " von " + d.ligen.pl.gesamt + "</b>";
+    fuss.appendChild(z1);
+
+    var z2 = document.createElement("div");
+    z2.textContent = "Bundesliga-Werte sind mit 1,1176 multipliziert, um 34 auf 38 Spiele anzugleichen. "
+                   + "Isak und Guirassy zählen nur mit Toren. Als bester Scorer zählt immer ein anderer "
+                   + "Spieler – die beiden Stürmer sind aus dieser Wertung ausgeschlossen und können "
+                   + "nicht doppelt zählen.";
+    fuss.appendChild(z2);
+
+    if(d.vorlagen_stand != null && d.ligen.bl.spieltag - d.vorlagen_stand >= 2){
+      var warn = document.createElement("div");
+      warn.className = "warnung";
+      warn.textContent = "BVB-Vorlagen sind nur bis Spieltag " + d.vorlagen_stand
+                       + " gepflegt. Marvins Stand ist veraltet.";
+      fuss.appendChild(warn);
+    }
+
+    var z3 = document.createElement("div");
+    z3.textContent = "Daten: Fantasy-Premier-League-API und OpenLigaDB. "
+                   + "BVB-Vorlagen von Hand gepflegt, Änderungen sind in der Git-Historie nachvollziehbar.";
+    fuss.appendChild(z3);
+  }
+
+  fetch("data.json?v=" + Date.now(), {cache:"no-store"})
+    .then(function(a){
+      if(!a.ok) throw new Error("HTTP " + a.status);
+      return a.json();
+    })
+    .then(zeichne)
+    .catch(function(f){
+      zeigeFehler("data.json konnte nicht gelesen werden (" + f.message
+                + "). Prüf im Repo unter Actions, ob der letzte Lauf durchgelaufen ist.");
+    });
+})();
+</script>
+</body>
+</html>

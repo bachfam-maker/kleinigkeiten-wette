@@ -1,0 +1,38 @@
+{
+  "generiert": "2026-08-07T06:00:00+00:00",
+  "saison": "2026/27",
+  "faktor_bl": 1.1176470588,
+  "trikot": {
+    "verein": "Chelsea",
+    "startwert": 10.0,
+    "wahrscheinlichkeit": 10.0,
+    "modellwert": 10.0,
+    "platz": null,
+    "punkte": 0,
+    "spiele": 0,
+    "rueckstand": null,
+    "spitzenreiter": null
+  },
+  "ligen": {
+    "bl": { "spieltag": 0, "gesamt": 34, "partien_verein": 0 },
+    "pl": { "spieltag": 0, "gesamt": 38 }
+  },
+  "marvin": {
+    "liga": "Bundesliga",
+    "verein": "Borussia Dortmund",
+    "stuermer": { "name": "Guirassy", "tore": 0, "wert": 0.0 },
+    "scorer": [],
+    "punkte": 0.0,
+    "lage": "knapp"
+  },
+  "hendrik": {
+    "liga": "Premier League",
+    "verein": "Liverpool",
+    "stuermer": { "name": "Isak", "tore": 0, "wert": 0.0 },
+    "scorer": [],
+    "punkte": 0.0,
+    "lage": "knapp"
+  },
+  "differenz": 0.0,
+  "vorlagen_stand": 0
+}
