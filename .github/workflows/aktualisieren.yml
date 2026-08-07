@@ -8,7 +8,7 @@ on:
   push:
     paths:
       - "data/manual.json"
-      - "scripts/update.py"
+      - "update.py"
 
 permissions:
   contents: write
