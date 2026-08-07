@@ -6,6 +6,21 @@
 <title>Kleinigkeiten-Wette</title>
 <meta name="description" content="Marvin gegen Hendrik, Saison 2026/27. Live-Stand der Duell-Wette und der Trikot-Wette.">
 <meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kleinigkeiten-Wette">
+<meta property="og:title" content="Kleinigkeiten-Wette · Marvin gegen Hendrik">
+<meta property="og:description" content="Saison 2026/27. Live-Stand der Duell-Wette und der Trikot-Wette.">
+<meta property="og:url" content="https://bachfam-maker.github.io/kleinigkeiten-wette/">
+<meta property="og:image" content="https://bachfam-maker.github.io/kleinigkeiten-wette/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Marvin gegen Hendrik, Saison 2026/27">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kleinigkeiten-Wette · Marvin gegen Hendrik">
+<meta name="twitter:description" content="Saison 2026/27. Live-Stand der Duell-Wette und der Trikot-Wette.">
+<meta name="twitter:image" content="https://bachfam-maker.github.io/kleinigkeiten-wette/share.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -195,6 +210,19 @@
   .fuss b{color:var(--gedaempft);font-weight:500}
   .warnung{color:var(--gelb)}
 
+  .graf{margin:26px 0 0;padding:0}
+  .graf-kopf{
+    display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
+    gap:6px 16px;margin-bottom:10px;
+  }
+  .graf-titel{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--leise)}
+  .graf-legende{display:flex;gap:14px;font-size:11.5px;color:var(--gedaempft)}
+  .graf-legende i{display:inline-block;width:12px;height:2px;vertical-align:middle;margin-right:5px}
+  .graf svg{display:block;width:100%;height:auto}
+  .graf-leer{
+    border:1px dashed var(--linie);border-radius:var(--rand);
+    padding:20px;text-align:center;font-size:13px;color:var(--leise);
+  }
   .laedt{color:var(--leise);font-size:14px;padding:40px 0}
   .fehler{
     border:1px solid var(--pink);border-radius:var(--rand);
@@ -241,6 +269,7 @@
       </div>
       <div class="balken-skala"><span>0 %</span><span>Startwert 10 %</span><span>100 %</span></div>
       <dl class="fakten" id="fakten"></dl>
+      <figure class="graf" id="grafChelsea"></figure>
     </section>
 
     <section aria-labelledby="t-duell">
@@ -265,6 +294,7 @@
         <article class="seite m" id="seiteMarvin"></article>
         <article class="seite h" id="seiteHendrik"></article>
       </div>
+      <figure class="graf" id="grafDuell"></figure>
     </section>
 
     <footer class="fuss" id="fuss"></footer>
@@ -454,10 +484,10 @@
       "Marvin " + ZAHL1.format(d.marvin.punkte) + " Punkte, Hendrik " + ZAHL1.format(d.hendrik.punkte) + " Punkte.");
 
     var figurM = el("figurMarvin");
-    figurM.src = "Marvin_" + d.marvin.lage + ".png";
+    figurM.src = "assets/avatars/Marvin_" + d.marvin.lage + ".png";
     figurM.alt = "Marvin liegt " + d.marvin.lage;
     var figurH = el("figurHendrik");
-    figurH.src = "Hendrik_" + d.hendrik.lage + ".png";
+    figurH.src = "assets/avatars/Hendrik_" + d.hendrik.lage + ".png";
     figurH.alt = "Hendrik liegt " + d.hendrik.lage;
 
     // ---- Fuss
@@ -490,12 +520,213 @@
     fuss.appendChild(z3);
   }
 
+  // ---------------------------------------------------------------- Diagramme
+
+  var NS = "http://www.w3.org/2000/svg";
+
+  function sv(name, attribute){
+    var knoten = document.createElementNS(NS, name);
+    for(var schluessel in attribute){
+      if(Object.prototype.hasOwnProperty.call(attribute, schluessel)){
+        knoten.setAttribute(schluessel, attribute[schluessel]);
+      }
+    }
+    return knoten;
+  }
+
+  /**
+   * Zeichnet ein schlichtes Liniendiagramm.
+   * opt = {titel, legende:[{name,farbe}], serien:[{werte:[[x,y]],farbe}],
+   *        xMin,xMax,yMin,yMax, xMarken:[{x,text}], yMarken:[{y,text}],
+   *        referenz:{y,text}, fussnote}
+   */
+  function zeichneGraf(ziel, opt){
+    ziel.innerHTML = "";
+
+    var kopf = document.createElement("figcaption");
+    kopf.className = "graf-kopf";
+    var titel = document.createElement("span");
+    titel.className = "graf-titel";
+    titel.textContent = opt.titel;
+    kopf.appendChild(titel);
+
+    if(opt.legende && opt.legende.length){
+      var legende = document.createElement("span");
+      legende.className = "graf-legende";
+      opt.legende.forEach(function(eintrag){
+        var teil = document.createElement("span");
+        var strich = document.createElement("i");
+        strich.style.background = eintrag.farbe;
+        teil.appendChild(strich);
+        teil.appendChild(document.createTextNode(eintrag.name));
+        legende.appendChild(teil);
+      });
+      kopf.appendChild(legende);
+    }
+    ziel.appendChild(kopf);
+
+    var B = 700, H = 210, L = 46, R = 14, O = 12, U = 30;
+    var iB = B - L - R, iH = H - O - U;
+
+    var svg = sv("svg", {viewBox: "0 0 " + B + " " + H, role: "img",
+                         "aria-label": opt.titel, preserveAspectRatio: "xMidYMid meet"});
+
+    function px(x){
+      if(opt.xMax === opt.xMin) return L + iB / 2;
+      return L + (x - opt.xMin) / (opt.xMax - opt.xMin) * iB;
+    }
+    function py(y){
+      if(opt.yMax === opt.yMin) return O + iH / 2;
+      return O + iH - (y - opt.yMin) / (opt.yMax - opt.yMin) * iH;
+    }
+
+    (opt.yMarken || []).forEach(function(marke){
+      var y = py(marke.y);
+      svg.appendChild(sv("line", {x1:L, y1:y, x2:B-R, y2:y,
+        stroke:"rgba(255,255,255,.08)", "stroke-width":1}));
+      var t = sv("text", {x:L-9, y:y+4, "text-anchor":"end",
+        fill:"rgba(255,255,255,.34)", "font-size":11, "font-family":"IBM Plex Sans, sans-serif"});
+      t.textContent = marke.text;
+      svg.appendChild(t);
+    });
+
+    (opt.xMarken || []).forEach(function(marke){
+      var x = px(marke.x);
+      var t = sv("text", {x:x, y:H-10, "text-anchor":"middle",
+        fill:"rgba(255,255,255,.34)", "font-size":11, "font-family":"IBM Plex Sans, sans-serif"});
+      t.textContent = marke.text;
+      svg.appendChild(t);
+    });
+
+    if(opt.referenz){
+      var ry = py(opt.referenz.y);
+      svg.appendChild(sv("line", {x1:L, y1:ry, x2:B-R, y2:ry,
+        stroke:"rgba(255,255,255,.30)", "stroke-width":1, "stroke-dasharray":"4 4"}));
+      var rt = sv("text", {x:B-R, y:ry-6, "text-anchor":"end",
+        fill:"rgba(255,255,255,.42)", "font-size":10.5, "font-family":"IBM Plex Sans, sans-serif"});
+      rt.textContent = opt.referenz.text;
+      svg.appendChild(rt);
+    }
+
+    svg.appendChild(sv("line", {x1:L, y1:O, x2:L, y2:H-U,
+      stroke:"rgba(255,255,255,.14)", "stroke-width":1}));
+
+    opt.serien.forEach(function(serie){
+      if(!serie.werte.length) return;
+      var d = serie.werte.map(function(paar, i){
+        return (i ? "L" : "M") + px(paar[0]).toFixed(1) + " " + py(paar[1]).toFixed(1);
+      }).join(" ");
+      svg.appendChild(sv("path", {d:d, fill:"none", stroke:serie.farbe,
+        "stroke-width":2, "stroke-linejoin":"round", "stroke-linecap":"round"}));
+      var letzter = serie.werte[serie.werte.length - 1];
+      svg.appendChild(sv("circle", {cx:px(letzter[0]), cy:py(letzter[1]), r:3.5,
+        fill:serie.farbe}));
+    });
+
+    ziel.appendChild(svg);
+
+    if(opt.fussnote){
+      var fn = document.createElement("figcaption");
+      fn.className = "graf-titel";
+      fn.style.marginTop = "8px";
+      fn.style.letterSpacing = ".02em";
+      fn.style.textTransform = "none";
+      fn.textContent = opt.fussnote;
+      ziel.appendChild(fn);
+    }
+  }
+
+  function leererGraf(ziel, titel, text){
+    ziel.innerHTML = "";
+    var kopf = document.createElement("figcaption");
+    kopf.className = "graf-kopf";
+    var t = document.createElement("span");
+    t.className = "graf-titel";
+    t.textContent = titel;
+    kopf.appendChild(t);
+    ziel.appendChild(kopf);
+    var kasten = document.createElement("div");
+    kasten.className = "graf-leer";
+    kasten.textContent = text;
+    ziel.appendChild(kasten);
+  }
+
+  function tagText(iso){
+    var teile = iso.split("-");
+    return teile[2] + "." + teile[1] + ".";
+  }
+
+  function zeichneVerlauf(v, d){
+    var zielC = el("grafChelsea"), zielD = el("grafDuell");
+    if(!zielC || !zielD) return;
+
+    // ---- Chelsea nach Spieltag
+    var reiheC = (v && v.chelsea) ? v.chelsea : [];
+    if(reiheC.length < 2){
+      leererGraf(zielC, "Verlauf nach Spieltag",
+        "Die Kurve beginnt, sobald zwei Spieltage gespielt sind.");
+    } else {
+      var yMax = Math.min(100, Math.max(20, Math.ceil(Math.max.apply(null,
+        reiheC.map(function(e){ return e.wert; }).concat([d.trikot.startwert])) / 10) * 10 + 10));
+      var marken = [];
+      for(var i = 0; i <= yMax; i += (yMax > 50 ? 25 : 10)) marken.push({y:i, text:i + " %"});
+      var xm = [];
+      for(var t = 1; t <= 38; t += 6) xm.push({x:t, text:t});
+      zeichneGraf(zielC, {
+        titel: "Verlauf nach Spieltag",
+        legende: [{name:"Meisterwahrscheinlichkeit", farbe:"var(--cyan)"}],
+        serien: [{werte: reiheC.map(function(e){ return [e.spieltag, e.wert]; }),
+                  farbe:"var(--cyan)"}],
+        xMin: 1, xMax: 38, yMin: 0, yMax: yMax,
+        xMarken: xm, yMarken: marken,
+        referenz: {y: d.trikot.startwert, text: "Startwert " + ZAHL1.format(d.trikot.startwert) + " %"},
+        fussnote: "Spieltag der Premier League"
+      });
+    }
+
+    // ---- Duell nach Datum
+    var reiheD = (v && v.duell) ? v.duell : [];
+    if(reiheD.length < 2){
+      leererGraf(zielD, "Verlauf im Saisonjahr",
+        "Die Kurven beginnen nach dem zweiten Aktualisierungstag der Saison.");
+    } else {
+      var zeit = reiheD.map(function(e){ return new Date(e.datum + "T12:00:00Z").getTime(); });
+      var maxP = Math.max.apply(null, reiheD.map(function(e){
+        return Math.max(e.marvin, e.hendrik); }));
+      var oben = Math.max(10, Math.ceil(maxP / 10) * 10);
+      var ym = [];
+      for(var k = 0; k <= oben; k += Math.max(5, Math.round(oben / 4 / 5) * 5)) ym.push({y:k, text:k});
+      var schritt = Math.max(1, Math.floor(reiheD.length / 5));
+      var xmd = [];
+      for(var j = 0; j < reiheD.length; j += schritt) xmd.push({x:zeit[j], text:tagText(reiheD[j].datum)});
+      var letzte = reiheD[reiheD.length - 1];
+      zeichneGraf(zielD, {
+        titel: "Verlauf im Saisonjahr",
+        legende: [{name:"Marvin", farbe:"var(--marvin)"}, {name:"Hendrik", farbe:"var(--hendrik)"}],
+        serien: [
+          {werte: reiheD.map(function(e,i){ return [zeit[i], e.marvin]; }), farbe:"var(--marvin)"},
+          {werte: reiheD.map(function(e,i){ return [zeit[i], e.hendrik]; }), farbe:"var(--hendrik)"}
+        ],
+        xMin: zeit[0], xMax: zeit[zeit.length-1], yMin: 0, yMax: oben,
+        xMarken: xmd, yMarken: ym,
+        fussnote: "Achse nach Datum, weil die Ligen zeitlich nicht synchron laufen. "
+                + "Zuletzt: Bundesliga Spieltag " + letzte.bl + ", Premier League Spieltag " + letzte.pl + "."
+      });
+    }
+  }
+
   fetch("data.json?v=" + Date.now(), {cache:"no-store"})
     .then(function(a){
       if(!a.ok) throw new Error("HTTP " + a.status);
       return a.json();
     })
-    .then(zeichne)
+    .then(function(d){
+      zeichne(d);
+      return fetch("verlauf.json?v=" + Date.now(), {cache:"no-store"})
+        .then(function(a){ return a.ok ? a.json() : null; })
+        .catch(function(){ return null; })
+        .then(function(v){ zeichneVerlauf(v, d); });
+    })
     .catch(function(f){
       zeigeFehler("data.json konnte nicht gelesen werden (" + f.message
                 + "). Prüf im Repo unter Actions, ob der letzte Lauf durchgelaufen ist.");
