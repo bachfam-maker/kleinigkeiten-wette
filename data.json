@@ -1,5 +1,5 @@
 {
-  "generiert": "2026-08-07T21:43:45+00:00",
+  "generiert": "2026-08-07T21:44:38+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
@@ -49,5 +49,5 @@
     "lage": "knapp"
   },
   "differenz": 0.0,
-  "vorlagen_stand": 15
+  "vorlagen_stand": 1
 }
