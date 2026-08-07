@@ -36,7 +36,7 @@ jobs:
         run: |
           git config user.name  "kleinigkeiten-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A data.json
+          git add -A data.json verlauf.json
           if git diff --cached --quiet; then
             echo "Keine Aenderung, nichts einzuchecken."
             exit 0
