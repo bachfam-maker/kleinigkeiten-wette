@@ -53,6 +53,7 @@ OLDB_BASE = "https://api.openligadb.de"
 WURZEL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MANUAL_PFAD = os.path.join(WURZEL, "data", "manual.json")
 AUSGABE_PFAD = os.path.join(WURZEL, "data.json")
+VERLAUF_PFAD = os.path.join(WURZEL, "verlauf.json")
 
 
 # ---------------------------------------------------------------- Hilfsmittel
@@ -340,6 +341,53 @@ def als_zeilen(eintraege, faktor):
     return zeilen
 
 
+def schreibe_verlauf(daten):
+    """
+    Haengt den aktuellen Stand an verlauf.json an.
+
+    Erst ab dem ersten absolvierten Spieltag, sonst wuerden Vorsaisonwerte
+    dauerhaft am Anfang der Kurve stehen. Bestehende Eintraege desselben
+    Spieltags bzw. desselben Tages werden ueberschrieben, nicht verdoppelt.
+    """
+    bl = daten["ligen"]["bl"]["spieltag"]
+    pl = daten["ligen"]["pl"]["spieltag"]
+    if bl == 0 and pl == 0:
+        print("Verlauf: noch kein Spieltag absolviert, kein Eintrag.")
+        return
+
+    if os.path.exists(VERLAUF_PFAD):
+        with open(VERLAUF_PFAD, "r", encoding="utf-8") as datei:
+            verlauf = json.load(datei)
+    else:
+        verlauf = {}
+    verlauf.setdefault("chelsea", [])
+    verlauf.setdefault("duell", [])
+
+    if pl > 0:
+        eintrag = {"spieltag": pl, "wert": daten["trikot"]["wahrscheinlichkeit"]}
+        verlauf["chelsea"] = [e for e in verlauf["chelsea"] if e.get("spieltag") != pl]
+        verlauf["chelsea"].append(eintrag)
+        verlauf["chelsea"].sort(key=lambda e: e.get("spieltag", 0))
+
+    tag = daten["generiert"][:10]
+    punkt = {
+        "datum": tag,
+        "marvin": daten["marvin"]["punkte"],
+        "hendrik": daten["hendrik"]["punkte"],
+        "bl": bl,
+        "pl": pl,
+    }
+    verlauf["duell"] = [e for e in verlauf["duell"] if e.get("datum") != tag]
+    verlauf["duell"].append(punkt)
+    verlauf["duell"].sort(key=lambda e: e.get("datum", ""))
+
+    with open(VERLAUF_PFAD, "w", encoding="utf-8") as datei:
+        json.dump(verlauf, datei, ensure_ascii=False, indent=2)
+        datei.write("\n")
+
+    print(f"Verlauf: {len(verlauf['duell'])} Tage, {len(verlauf['chelsea'])} Spieltage.")
+
+
 def main():
     print("Premier League abrufen ...")
     lfc_spieler, pl_tabelle, pl_spieltag = premier_league()
@@ -348,6 +396,16 @@ def main():
     bvb_tore, bl_spieltag, bvb_partien = bundesliga()
 
     manuelle_vorlagen, manueller_stand = lade_manuell()
+
+    # Vor dem ersten Spieltag liefern beide Quellen noch Vorjahreswerte:
+    # die FPL-API stellt erst mit dem Saisonstart um, OpenLigaDB haelt alte
+    # Spieldaten vor. Ohne diese Sperre stuende ein Vorsprung auf der Seite,
+    # bevor ein einziges Spiel angepfiffen wurde.
+    if pl_spieltag == 0:
+        lfc_spieler = []
+    if bl_spieltag == 0:
+        bvb_tore = {}
+        manuelle_vorlagen = {}
 
     # ---- Hendrik (Premier League)
     isak = None
@@ -481,6 +539,8 @@ def main():
     with open(AUSGABE_PFAD, "w", encoding="utf-8") as datei:
         json.dump(daten, datei, ensure_ascii=False, indent=2)
         datei.write("\n")
+
+    schreibe_verlauf(daten)
 
     print(f"\ndata.json geschrieben.")
     print(f"  Marvin  {marvin_punkte}  |  Hendrik  {hendrik_punkte}  |  Differenz {differenz}")
