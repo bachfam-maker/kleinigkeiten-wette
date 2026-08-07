@@ -38,7 +38,7 @@ jobs:
       - name: Daten abrufen und rechnen
         run: python scripts/update.py
 
-      - name: Ergebnis einchecken
+      -- name: Ergebnis einchecken
         run: |
           git config user.name  "kleinigkeiten-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -48,4 +48,14 @@ jobs:
             exit 0
           fi
           git commit -m "Stand aktualisiert: $(date -u '+%Y-%m-%d %H:%M UTC')"
-          git push
+          for versuch in 1 2 3; do
+            if git push; then
+              echo "Push erfolgreich im Versuch $versuch."
+              exit 0
+            fi
+            echo "Verzweigung hat sich bewegt, hole nach und versuche erneut ..."
+            git pull --rebase --autostash origin main || true
+            sleep 5
+          done
+          echo "Push nach drei Versuchen fehlgeschlagen."
+          exit 1
