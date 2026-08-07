@@ -1,5 +1,5 @@
 {
-  "generiert": "2026-08-07T06:00:00+00:00",
+  "generiert": "2026-08-07T20:43:18+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
@@ -14,25 +14,65 @@
     "spitzenreiter": null
   },
   "ligen": {
-    "bl": { "spieltag": 0, "gesamt": 34, "partien_verein": 0 },
-    "pl": { "spieltag": 0, "gesamt": 38 }
+    "bl": {
+      "spieltag": 0,
+      "gesamt": 34,
+      "partien_verein": 0
+    },
+    "pl": {
+      "spieltag": 0,
+      "gesamt": 38
+    }
   },
   "marvin": {
     "liga": "Bundesliga",
     "verein": "Borussia Dortmund",
-    "stuermer": { "name": "Guirassy", "tore": 0, "wert": 0.0 },
+    "stuermer": {
+      "name": "Guirassy",
+      "tore": 0,
+      "wert": 0.0
+    },
     "scorer": [],
     "punkte": 0.0,
-    "lage": "knapp"
+    "lage": "hinten"
   },
   "hendrik": {
     "liga": "Premier League",
     "verein": "Liverpool",
-    "stuermer": { "name": "Isak", "tore": 0, "wert": 0.0 },
-    "scorer": [],
-    "punkte": 0.0,
-    "lage": "knapp"
+    "stuermer": {
+      "name": "Isak",
+      "tore": 3,
+      "wert": 3.0
+    },
+    "scorer": [
+      {
+        "name": "Ekitiké",
+        "tore": 11,
+        "vorlagen": 4,
+        "roh": 15,
+        "wert": 15.0,
+        "zaehlt": true
+      },
+      {
+        "name": "Szoboszlai",
+        "tore": 6,
+        "vorlagen": 7,
+        "roh": 13,
+        "wert": 13.0,
+        "zaehlt": false
+      },
+      {
+        "name": "Gakpo",
+        "tore": 7,
+        "vorlagen": 5,
+        "roh": 12,
+        "wert": 12.0,
+        "zaehlt": false
+      }
+    ],
+    "punkte": 18.0,
+    "lage": "vorne"
   },
-  "differenz": 0.0,
-  "vorlagen_stand": 0
+  "differenz": 18.0,
+  "vorlagen_stand": null
 }
