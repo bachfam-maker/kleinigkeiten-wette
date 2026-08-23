@@ -1,12 +1,12 @@
 {
-  "generiert": "2026-08-23T17:57:35+00:00",
+  "generiert": "2026-08-23T20:41:26+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
     "verein": "Chelsea",
     "startwert": 10.0,
-    "wahrscheinlichkeit": 10.0,
-    "modellwert": 10.0,
+    "wahrscheinlichkeit": 9.8,
+    "modellwert": 1.6,
     "platz": null,
     "punkte": 0,
     "spiele": 0,
@@ -20,7 +20,7 @@
       "partien_verein": 0
     },
     "pl": {
-      "spieltag": 0,
+      "spieltag": 1,
       "gesamt": 38
     }
   },
@@ -44,10 +44,35 @@
       "tore": 0,
       "wert": 0.0
     },
-    "scorer": [],
-    "punkte": 0.0,
+    "scorer": [
+      {
+        "name": "Gakpo",
+        "tore": 1,
+        "vorlagen": 0,
+        "roh": 1,
+        "wert": 1.0,
+        "zaehlt": true
+      },
+      {
+        "name": "Szoboszlai",
+        "tore": 1,
+        "vorlagen": 0,
+        "roh": 1,
+        "wert": 1.0,
+        "zaehlt": false
+      },
+      {
+        "name": "Gravenberch",
+        "tore": 0,
+        "vorlagen": 1,
+        "roh": 1,
+        "wert": 1.0,
+        "zaehlt": false
+      }
+    ],
+    "punkte": 1.0,
     "lage": "knapp"
   },
-  "differenz": 0.0,
+  "differenz": 1.0,
   "vorlagen_stand": 1
 }

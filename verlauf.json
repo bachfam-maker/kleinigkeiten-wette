@@ -1,4 +1,17 @@
 {
-  "chelsea": [],
-  "duell": []
+  "chelsea": [
+    {
+      "spieltag": 1,
+      "wert": 9.8
+    }
+  ],
+  "duell": [
+    {
+      "datum": "2026-08-23",
+      "marvin": 0.0,
+      "hendrik": 1.0,
+      "bl": 0,
+      "pl": 1
+    }
+  ]
 }
