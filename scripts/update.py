@@ -106,6 +106,12 @@ def premier_league():
     stamm = hole(f"{FPL_BASE}/bootstrap-static/")
     spiele = hole(f"{FPL_BASE}/fixtures/")
 
+    ereignisse = stamm.get("events") or []
+    laeuft = any(
+        e.get("finished") or e.get("is_current") or e.get("data_checked")
+        for e in ereignisse
+    )
+
     vereine = {v["id"]: v for v in stamm.get("teams", [])}
     if not vereine:
         raise SystemExit("FPL: keine Vereine in bootstrap-static gefunden.")
@@ -124,7 +130,7 @@ def premier_league():
         for kennung, verein in vereine.items()
     }
     for spiel in spiele:
-        if not spiel.get("finished"):
+        if not (spiel.get("finished") or spiel.get("finished_provisional")):
             continue
         heim, aus = spiel.get("team_h"), spiel.get("team_a")
         tore_h, tore_a = spiel.get("team_h_score"), spiel.get("team_a_score")
@@ -163,7 +169,11 @@ def premier_league():
     if not lfc_spieler:
         raise SystemExit("FPL: keine Liverpool-Spieler gefunden.")
 
-    return lfc_spieler, tabelle, spieltag
+    gw = [e.get("id") for e in ereignisse if e.get("is_current")]
+    print(f"  FPL: Saison laeuft = {laeuft}, aktueller Spieltag laut FPL = "
+          f"{gw[0] if gw else 'keiner'}, gewertete Partien = {spieltag}")
+
+    return lfc_spieler, tabelle, spieltag, laeuft
 
 
 # ---------------------------------------------------------------- Bundesliga
@@ -390,7 +400,7 @@ def schreibe_verlauf(daten):
 
 def main():
     print("Premier League abrufen ...")
-    lfc_spieler, pl_tabelle, pl_spieltag = premier_league()
+    lfc_spieler, pl_tabelle, pl_spieltag, pl_laeuft = premier_league()
 
     print("Bundesliga abrufen ...")
     bvb_tore, bl_spieltag, bvb_partien = bundesliga()
@@ -401,7 +411,7 @@ def main():
     # die FPL-API stellt erst mit dem Saisonstart um, OpenLigaDB haelt alte
     # Spieldaten vor. Ohne diese Sperre stuende ein Vorsprung auf der Seite,
     # bevor ein einziges Spiel angepfiffen wurde.
-    if pl_spieltag == 0:
+    if not pl_laeuft:
         lfc_spieler = []
     if bl_spieltag == 0:
         bvb_tore = {}
