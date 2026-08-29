@@ -1,5 +1,5 @@
 {
-  "generiert": "2026-08-29T05:17:54+00:00",
+  "generiert": "2026-08-29T13:15:21+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
@@ -32,17 +32,8 @@
       "tore": 0,
       "wert": 0.0
     },
-    "scorer": [
-      {
-        "name": "Ryerson",
-        "tore": 0,
-        "vorlagen": 1,
-        "roh": 1,
-        "wert": 1.1,
-        "zaehlt": true
-      }
-    ],
-    "punkte": 1.1,
+    "scorer": [],
+    "punkte": 0.0,
     "lage": "knapp"
   },
   "hendrik": {
@@ -50,16 +41,16 @@
     "verein": "Liverpool",
     "stuermer": {
       "name": "Isak",
-      "tore": 0,
-      "wert": 0.0
+      "tore": 1,
+      "wert": 1.0
     },
     "scorer": [
       {
         "name": "Gakpo",
         "tore": 1,
-        "vorlagen": 0,
-        "roh": 1,
-        "wert": 1.0,
+        "vorlagen": 1,
+        "roh": 2,
+        "wert": 2.0,
         "zaehlt": true
       },
       {
@@ -79,9 +70,9 @@
         "zaehlt": false
       }
     ],
-    "punkte": 1.0,
+    "punkte": 3.0,
     "lage": "knapp"
   },
-  "differenz": -0.1,
-  "vorlagen_stand": 1
+  "differenz": 3.0,
+  "vorlagen_stand": 0
 }
