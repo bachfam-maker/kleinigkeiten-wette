@@ -1,12 +1,12 @@
 {
-  "generiert": "2026-08-29T13:15:21+00:00",
+  "generiert": "2026-08-29T17:20:41+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
     "verein": "Chelsea",
     "startwert": 10.0,
-    "wahrscheinlichkeit": 9.9,
-    "modellwert": 8.4,
+    "wahrscheinlichkeit": 9.8,
+    "modellwert": 7.1,
     "platz": 7,
     "punkte": 3,
     "spiele": 1,
@@ -32,8 +32,17 @@
       "tore": 0,
       "wert": 0.0
     },
-    "scorer": [],
-    "punkte": 0.0,
+    "scorer": [
+      {
+        "name": "Karetsas",
+        "tore": 0,
+        "vorlagen": 1,
+        "roh": 1,
+        "wert": 1.1,
+        "zaehlt": true
+      }
+    ],
+    "punkte": 1.1,
     "lage": "knapp"
   },
   "hendrik": {
@@ -54,17 +63,17 @@
         "zaehlt": true
       },
       {
-        "name": "Szoboszlai",
+        "name": "Munoz",
         "tore": 1,
-        "vorlagen": 0,
-        "roh": 1,
-        "wert": 1.0,
+        "vorlagen": 1,
+        "roh": 2,
+        "wert": 2.0,
         "zaehlt": false
       },
       {
-        "name": "Gravenberch",
-        "tore": 0,
-        "vorlagen": 1,
+        "name": "Szoboszlai",
+        "tore": 1,
+        "vorlagen": 0,
         "roh": 1,
         "wert": 1.0,
         "zaehlt": false
@@ -73,6 +82,6 @@
     "punkte": 3.0,
     "lage": "knapp"
   },
-  "differenz": 3.0,
-  "vorlagen_stand": 0
+  "differenz": 1.9,
+  "vorlagen_stand": 1
 }
