@@ -1,5 +1,5 @@
 {
-  "generiert": "2026-08-29T17:20:41+00:00",
+  "generiert": "2026-08-29T17:20:56+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
@@ -34,12 +34,20 @@
     },
     "scorer": [
       {
-        "name": "Karetsas",
+        "name": "Beier",
         "tore": 0,
         "vorlagen": 1,
         "roh": 1,
         "wert": 1.1,
         "zaehlt": true
+      },
+      {
+        "name": "Karetsas",
+        "tore": 0,
+        "vorlagen": 1,
+        "roh": 1,
+        "wert": 1.1,
+        "zaehlt": false
       }
     ],
     "punkte": 1.1,
