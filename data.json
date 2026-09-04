@@ -1,12 +1,12 @@
 {
-  "generiert": "2026-09-04T05:22:37+00:00",
+  "generiert": "2026-09-04T21:18:16+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
     "verein": "Chelsea",
     "startwert": 10.0,
-    "wahrscheinlichkeit": 10.6,
-    "modellwert": 21.4,
+    "wahrscheinlichkeit": 10.9,
+    "modellwert": 21.2,
     "platz": 4,
     "punkte": 6,
     "spiele": 2,
@@ -15,12 +15,12 @@
   },
   "ligen": {
     "bl": {
-      "spieltag": 1,
+      "spieltag": 2,
       "gesamt": 34,
       "partien_verein": 1
     },
     "pl": {
-      "spieltag": 2,
+      "spieltag": 3,
       "gesamt": 38
     }
   },
@@ -59,23 +59,23 @@
       }
     ],
     "punkte": 2.2,
-    "lage": "knapp"
+    "lage": "hinten"
   },
   "hendrik": {
     "liga": "Premier League",
     "verein": "Liverpool",
     "stuermer": {
       "name": "Isak",
-      "tore": 1,
-      "wert": 1.0
+      "tore": 3,
+      "wert": 3.0
     },
     "scorer": [
       {
         "name": "Gakpo",
         "tore": 1,
-        "vorlagen": 1,
-        "roh": 2,
-        "wert": 2.0,
+        "vorlagen": 3,
+        "roh": 4,
+        "wert": 4.0,
         "zaehlt": true
       },
       {
@@ -95,9 +95,9 @@
         "zaehlt": false
       }
     ],
-    "punkte": 3.0,
-    "lage": "knapp"
+    "punkte": 7.0,
+    "lage": "vorne"
   },
-  "differenz": 0.8,
+  "differenz": 4.8,
   "vorlagen_stand": 1
 }

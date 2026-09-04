@@ -7,6 +7,10 @@
     {
       "spieltag": 2,
       "wert": 10.6
+    },
+    {
+      "spieltag": 3,
+      "wert": 10.9
     }
   ],
   "duell": [
@@ -90,9 +94,9 @@
     {
       "datum": "2026-09-04",
       "marvin": 2.2,
-      "hendrik": 3.0,
-      "bl": 1,
-      "pl": 2
+      "hendrik": 7.0,
+      "bl": 2,
+      "pl": 3
     }
   ]
 }
