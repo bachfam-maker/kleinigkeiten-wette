@@ -1,23 +1,23 @@
 {
-  "generiert": "2026-09-05T05:21:24+00:00",
+  "generiert": "2026-09-05T16:30:49+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
     "verein": "Chelsea",
     "startwert": 10.0,
-    "wahrscheinlichkeit": 10.9,
-    "modellwert": 21.2,
+    "wahrscheinlichkeit": 10.5,
+    "modellwert": 16.6,
     "platz": 4,
     "punkte": 6,
     "spiele": 2,
-    "rueckstand": 0,
-    "spitzenreiter": "Arsenal"
+    "rueckstand": 3,
+    "spitzenreiter": "Man City"
   },
   "ligen": {
     "bl": {
       "spieltag": 2,
       "gesamt": 34,
-      "partien_verein": 1
+      "partien_verein": 2
     },
     "pl": {
       "spieltag": 3,
@@ -29,17 +29,25 @@
     "verein": "Borussia Dortmund",
     "stuermer": {
       "name": "Guirassy",
-      "tore": 1,
-      "wert": 1.1
+      "tore": 2,
+      "wert": 2.2
     },
     "scorer": [
+      {
+        "name": "Fabio Silva",
+        "tore": 1,
+        "vorlagen": 0,
+        "roh": 1,
+        "wert": 1.1,
+        "zaehlt": true
+      },
       {
         "name": "Giannis Konstantelias",
         "tore": 1,
         "vorlagen": 0,
         "roh": 1,
         "wert": 1.1,
-        "zaehlt": true
+        "zaehlt": false
       },
       {
         "name": "Beier",
@@ -48,17 +56,9 @@
         "roh": 1,
         "wert": 1.1,
         "zaehlt": false
-      },
-      {
-        "name": "Karetsas",
-        "tore": 0,
-        "vorlagen": 1,
-        "roh": 1,
-        "wert": 1.1,
-        "zaehlt": false
       }
     ],
-    "punkte": 2.2,
+    "punkte": 3.3,
     "lage": "hinten"
   },
   "hendrik": {
@@ -98,6 +98,6 @@
     "punkte": 7.0,
     "lage": "vorne"
   },
-  "differenz": 4.8,
-  "vorlagen_stand": 1
+  "differenz": 3.7,
+  "vorlagen_stand": 2
 }
