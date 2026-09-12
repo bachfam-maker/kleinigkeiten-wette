@@ -1,26 +1,26 @@
 {
-  "generiert": "2026-09-12T09:16:49+00:00",
+  "generiert": "2026-09-12T17:32:10+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
     "verein": "Chelsea",
     "startwert": 10.0,
-    "wahrscheinlichkeit": 9.5,
-    "modellwert": 3.2,
+    "wahrscheinlichkeit": 9.2,
+    "modellwert": 2.0,
     "platz": 4,
-    "punkte": 6,
-    "spiele": 3,
-    "rueckstand": 3,
+    "punkte": 7,
+    "spiele": 4,
+    "rueckstand": 2,
     "spitzenreiter": "Arsenal"
   },
   "ligen": {
     "bl": {
       "spieltag": 3,
       "gesamt": 34,
-      "partien_verein": 2
+      "partien_verein": 3
     },
     "pl": {
-      "spieltag": 3,
+      "spieltag": 4,
       "gesamt": 38
     }
   },
@@ -34,32 +34,32 @@
     },
     "scorer": [
       {
-        "name": "Fabio Silva",
-        "tore": 1,
+        "name": "F. Nmecha",
+        "tore": 2,
         "vorlagen": 0,
-        "roh": 1,
-        "wert": 1.1,
+        "roh": 2,
+        "wert": 2.2,
         "zaehlt": true
       },
       {
-        "name": "Giannis Konstantelias",
-        "tore": 1,
+        "name": "Fabio Silva",
+        "tore": 2,
         "vorlagen": 0,
-        "roh": 1,
-        "wert": 1.1,
+        "roh": 2,
+        "wert": 2.2,
         "zaehlt": false
       },
       {
         "name": "Beier",
         "tore": 0,
-        "vorlagen": 1,
-        "roh": 1,
-        "wert": 1.1,
+        "vorlagen": 2,
+        "roh": 2,
+        "wert": 2.2,
         "zaehlt": false
       }
     ],
-    "punkte": 3.3,
-    "lage": "hinten"
+    "punkte": 4.4,
+    "lage": "knapp"
   },
   "hendrik": {
     "liga": "Premier League",
@@ -96,8 +96,8 @@
       }
     ],
     "punkte": 7.0,
-    "lage": "vorne"
+    "lage": "knapp"
   },
-  "differenz": 3.7,
-  "vorlagen_stand": 2
+  "differenz": 2.6,
+  "vorlagen_stand": 3
 }

@@ -1,9 +1,9 @@
 {
   "_hinweis": "BVB-Vorlagen von Hand. Saison-Gesamtwerte eintragen, keine Zuwaechse. Am einfachsten ueber Actions -> 'Vorlagen eintragen'. Guirassy wird ignoriert, bei ihm zaehlen nur Tore.",
   "bvb_vorlagen": {
-    "Beier": 1,
+    "Beier": 2,
     "Karetsas": 1,
     "Nwaneri": 1
   },
-  "stand_spieltag": 2
+  "stand_spieltag": 3
 }
