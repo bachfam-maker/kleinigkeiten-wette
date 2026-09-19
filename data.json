@@ -1,23 +1,23 @@
 {
-  "generiert": "2026-09-19T09:28:02+00:00",
+  "generiert": "2026-09-19T22:55:06+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
     "verein": "Chelsea",
     "startwert": 10.0,
     "wahrscheinlichkeit": 8.7,
-    "modellwert": 0.1,
-    "platz": 7,
+    "modellwert": 0.2,
+    "platz": 9,
     "punkte": 7,
     "spiele": 5,
     "rueckstand": 5,
-    "spitzenreiter": "Arsenal"
+    "spitzenreiter": "Man City"
   },
   "ligen": {
     "bl": {
       "spieltag": 4,
       "gesamt": 34,
-      "partien_verein": 3
+      "partien_verein": 4
     },
     "pl": {
       "spieltag": 5,
@@ -34,12 +34,20 @@
     },
     "scorer": [
       {
+        "name": "M. Beier",
+        "tore": 1,
+        "vorlagen": 2,
+        "roh": 3,
+        "wert": 3.4,
+        "zaehlt": true
+      },
+      {
         "name": "F. Nmecha",
         "tore": 2,
         "vorlagen": 0,
         "roh": 2,
         "wert": 2.2,
-        "zaehlt": true
+        "zaehlt": false
       },
       {
         "name": "Fabio Silva",
@@ -48,17 +56,9 @@
         "roh": 2,
         "wert": 2.2,
         "zaehlt": false
-      },
-      {
-        "name": "Beier",
-        "tore": 0,
-        "vorlagen": 2,
-        "roh": 2,
-        "wert": 2.2,
-        "zaehlt": false
       }
     ],
-    "punkte": 4.4,
+    "punkte": 5.6,
     "lage": "knapp"
   },
   "hendrik": {
@@ -98,6 +98,6 @@
     "punkte": 7.0,
     "lage": "knapp"
   },
-  "differenz": 2.6,
+  "differenz": 1.4,
   "vorlagen_stand": 3
 }
