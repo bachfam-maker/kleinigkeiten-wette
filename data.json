@@ -1,16 +1,16 @@
 {
-  "generiert": "2026-09-20T09:46:55+00:00",
+  "generiert": "2026-09-20T15:36:24+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
     "verein": "Chelsea",
     "startwert": 10.0,
     "wahrscheinlichkeit": 8.7,
-    "modellwert": 0.2,
-    "platz": 9,
+    "modellwert": 0.1,
+    "platz": 10,
     "punkte": 7,
     "spiele": 5,
-    "rueckstand": 5,
+    "rueckstand": 8,
     "spitzenreiter": "Man City"
   },
   "ligen": {
@@ -66,8 +66,8 @@
     "verein": "Liverpool",
     "stuermer": {
       "name": "Isak",
-      "tore": 3,
-      "wert": 3.0
+      "tore": 4,
+      "wert": 4.0
     },
     "scorer": [
       {
@@ -87,17 +87,17 @@
         "zaehlt": false
       },
       {
-        "name": "Szoboszlai",
-        "tore": 1,
-        "vorlagen": 0,
-        "roh": 1,
-        "wert": 1.0,
+        "name": "Wirtz",
+        "tore": 0,
+        "vorlagen": 2,
+        "roh": 2,
+        "wert": 2.0,
         "zaehlt": false
       }
     ],
-    "punkte": 7.0,
+    "punkte": 8.0,
     "lage": "knapp"
   },
-  "differenz": 1.4,
+  "differenz": 2.4,
   "vorlagen_stand": 3
 }
