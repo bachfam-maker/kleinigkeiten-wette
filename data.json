@@ -1,16 +1,16 @@
 {
-  "generiert": "2026-10-10T11:09:03+00:00",
+  "generiert": "2026-10-11T00:11:58+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
     "verein": "Chelsea",
     "startwert": 10.0,
-    "wahrscheinlichkeit": 8.7,
-    "modellwert": 0.1,
-    "platz": 10,
-    "punkte": 7,
-    "spiele": 5,
-    "rueckstand": 8,
+    "wahrscheinlichkeit": 8.5,
+    "modellwert": 0.4,
+    "platz": 5,
+    "punkte": 10,
+    "spiele": 6,
+    "rueckstand": 5,
     "spitzenreiter": "Man City"
   },
   "ligen": {
@@ -20,7 +20,7 @@
       "partien_verein": 5
     },
     "pl": {
-      "spieltag": 5,
+      "spieltag": 6,
       "gesamt": 38
     }
   },
