@@ -1,15 +1,15 @@
 {
-  "generiert": "2026-10-17T09:18:04+00:00",
+  "generiert": "2026-10-17T23:02:24+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
     "verein": "Chelsea",
     "startwert": 10.0,
-    "wahrscheinlichkeit": 8.5,
-    "modellwert": 0.2,
-    "platz": 6,
-    "punkte": 10,
-    "spiele": 6,
+    "wahrscheinlichkeit": 8.2,
+    "modellwert": 0.4,
+    "platz": 4,
+    "punkte": 13,
+    "spiele": 7,
     "rueckstand": 8,
     "spitzenreiter": "Man City"
   },
@@ -17,10 +17,10 @@
     "bl": {
       "spieltag": 6,
       "gesamt": 34,
-      "partien_verein": 5
+      "partien_verein": 6
     },
     "pl": {
-      "spieltag": 6,
+      "spieltag": 7,
       "gesamt": 38
     }
   },
@@ -59,15 +59,15 @@
       }
     ],
     "punkte": 5.6,
-    "lage": "knapp"
+    "lage": "hinten"
   },
   "hendrik": {
     "liga": "Premier League",
     "verein": "Liverpool",
     "stuermer": {
       "name": "Isak",
-      "tore": 4,
-      "wert": 4.0
+      "tore": 5,
+      "wert": 5.0
     },
     "scorer": [
       {
@@ -80,24 +80,24 @@
       },
       {
         "name": "Munoz",
-        "tore": 1,
+        "tore": 2,
         "vorlagen": 1,
-        "roh": 2,
-        "wert": 2.0,
+        "roh": 3,
+        "wert": 3.0,
         "zaehlt": false
       },
       {
         "name": "Wirtz",
         "tore": 0,
-        "vorlagen": 2,
-        "roh": 2,
-        "wert": 2.0,
+        "vorlagen": 3,
+        "roh": 3,
+        "wert": 3.0,
         "zaehlt": false
       }
     ],
-    "punkte": 8.0,
-    "lage": "knapp"
+    "punkte": 9.0,
+    "lage": "vorne"
   },
-  "differenz": 2.4,
+  "differenz": 3.4,
   "vorlagen_stand": 3
 }
