@@ -1,12 +1,12 @@
 {
-  "generiert": "2026-10-18T09:32:28+00:00",
+  "generiert": "2026-10-18T23:01:58+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
     "verein": "Chelsea",
     "startwert": 10.0,
     "wahrscheinlichkeit": 8.2,
-    "modellwert": 0.4,
+    "modellwert": 0.3,
     "platz": 4,
     "punkte": 13,
     "spiele": 7,
