@@ -1,15 +1,15 @@
 {
-  "generiert": "2026-10-24T09:29:53+00:00",
+  "generiert": "2026-10-24T23:06:15+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
     "verein": "Chelsea",
     "startwert": 10.0,
-    "wahrscheinlichkeit": 8.0,
-    "modellwert": 0.3,
+    "wahrscheinlichkeit": 7.9,
+    "modellwert": 0.1,
     "platz": 4,
     "punkte": 13,
-    "spiele": 7,
+    "spiele": 8,
     "rueckstand": 8,
     "spitzenreiter": "Man City"
   },
@@ -17,7 +17,7 @@
     "bl": {
       "spieltag": 7,
       "gesamt": 34,
-      "partien_verein": 6
+      "partien_verein": 7
     },
     "pl": {
       "spieltag": 8,
@@ -35,10 +35,10 @@
     "scorer": [
       {
         "name": "M. Beier",
-        "tore": 1,
+        "tore": 2,
         "vorlagen": 2,
-        "roh": 3,
-        "wert": 3.4,
+        "roh": 4,
+        "wert": 4.5,
         "zaehlt": true
       },
       {
@@ -58,8 +58,8 @@
         "zaehlt": false
       }
     ],
-    "punkte": 5.6,
-    "lage": "hinten"
+    "punkte": 6.7,
+    "lage": "knapp"
   },
   "hendrik": {
     "liga": "Premier League",
@@ -96,8 +96,8 @@
       }
     ],
     "punkte": 9.0,
-    "lage": "vorne"
+    "lage": "knapp"
   },
-  "differenz": 3.4,
+  "differenz": 2.3,
   "vorlagen_stand": 3
 }
