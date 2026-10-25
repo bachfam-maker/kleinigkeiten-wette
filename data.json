@@ -1,5 +1,5 @@
 {
-  "generiert": "2026-10-25T09:46:34+00:00",
+  "generiert": "2026-10-25T23:10:03+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
@@ -7,7 +7,7 @@
     "startwert": 10.0,
     "wahrscheinlichkeit": 7.9,
     "modellwert": 0.1,
-    "platz": 4,
+    "platz": 5,
     "punkte": 13,
     "spiele": 8,
     "rueckstand": 8,
@@ -59,15 +59,15 @@
       }
     ],
     "punkte": 6.7,
-    "lage": "knapp"
+    "lage": "hinten"
   },
   "hendrik": {
     "liga": "Premier League",
     "verein": "Liverpool",
     "stuermer": {
       "name": "Isak",
-      "tore": 5,
-      "wert": 5.0
+      "tore": 6,
+      "wert": 6.0
     },
     "scorer": [
       {
@@ -79,25 +79,25 @@
         "zaehlt": true
       },
       {
+        "name": "Wirtz",
+        "tore": 0,
+        "vorlagen": 4,
+        "roh": 4,
+        "wert": 4.0,
+        "zaehlt": false
+      },
+      {
         "name": "Munoz",
         "tore": 2,
         "vorlagen": 1,
         "roh": 3,
         "wert": 3.0,
         "zaehlt": false
-      },
-      {
-        "name": "Wirtz",
-        "tore": 0,
-        "vorlagen": 3,
-        "roh": 3,
-        "wert": 3.0,
-        "zaehlt": false
       }
     ],
-    "punkte": 9.0,
-    "lage": "knapp"
+    "punkte": 10.0,
+    "lage": "vorne"
   },
-  "differenz": 2.3,
+  "differenz": 3.3,
   "vorlagen_stand": 3
 }
