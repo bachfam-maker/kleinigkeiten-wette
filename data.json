@@ -1,5 +1,5 @@
 {
-  "generiert": "2026-10-30T11:21:17+00:00",
+  "generiert": "2026-10-31T00:41:56+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
@@ -15,7 +15,7 @@
   },
   "ligen": {
     "bl": {
-      "spieltag": 7,
+      "spieltag": 8,
       "gesamt": 34,
       "partien_verein": 7
     },
