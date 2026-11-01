@@ -1,26 +1,26 @@
 {
-  "generiert": "2026-10-31T10:53:43+00:00",
+  "generiert": "2026-11-01T00:01:56+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
     "verein": "Chelsea",
     "startwert": 10.0,
-    "wahrscheinlichkeit": 7.9,
-    "modellwert": 0.1,
-    "platz": 5,
-    "punkte": 13,
-    "spiele": 8,
-    "rueckstand": 8,
+    "wahrscheinlichkeit": 7.8,
+    "modellwert": 0.9,
+    "platz": 4,
+    "punkte": 16,
+    "spiele": 9,
+    "rueckstand": 5,
     "spitzenreiter": "Man City"
   },
   "ligen": {
     "bl": {
       "spieltag": 8,
       "gesamt": 34,
-      "partien_verein": 7
+      "partien_verein": 8
     },
     "pl": {
-      "spieltag": 8,
+      "spieltag": 9,
       "gesamt": 38
     }
   },
@@ -29,8 +29,8 @@
     "verein": "Borussia Dortmund",
     "stuermer": {
       "name": "Guirassy",
-      "tore": 2,
-      "wert": 2.2
+      "tore": 3,
+      "wert": 3.4
     },
     "scorer": [
       {
@@ -42,15 +42,15 @@
         "zaehlt": true
       },
       {
-        "name": "F. Nmecha",
-        "tore": 2,
+        "name": "Fabio Silva",
+        "tore": 3,
         "vorlagen": 0,
-        "roh": 2,
-        "wert": 2.2,
+        "roh": 3,
+        "wert": 3.4,
         "zaehlt": false
       },
       {
-        "name": "Fabio Silva",
+        "name": "F. Nmecha",
         "tore": 2,
         "vorlagen": 0,
         "roh": 2,
@@ -58,8 +58,8 @@
         "zaehlt": false
       }
     ],
-    "punkte": 6.7,
-    "lage": "hinten"
+    "punkte": 7.9,
+    "lage": "knapp"
   },
   "hendrik": {
     "liga": "Premier League",
@@ -96,8 +96,8 @@
       }
     ],
     "punkte": 10.0,
-    "lage": "vorne"
+    "lage": "knapp"
   },
-  "differenz": 3.3,
+  "differenz": 2.1,
   "vorlagen_stand": 3
 }
