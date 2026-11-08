@@ -1,5 +1,5 @@
 {
-  "generiert": "2026-11-08T20:02:25+00:00",
+  "generiert": "2026-11-08T20:02:44+00:00",
   "saison": "2026/27",
   "faktor_bl": 1.1176470588,
   "trikot": {
@@ -34,12 +34,20 @@
     },
     "scorer": [
       {
+        "name": "Fabio Silva",
+        "tore": 3,
+        "vorlagen": 2,
+        "roh": 5,
+        "wert": 5.6,
+        "zaehlt": true
+      },
+      {
         "name": "M. Beier",
         "tore": 2,
         "vorlagen": 3,
         "roh": 5,
         "wert": 5.6,
-        "zaehlt": true
+        "zaehlt": false
       },
       {
         "name": "F. Nmecha",
@@ -47,14 +55,6 @@
         "vorlagen": 0,
         "roh": 4,
         "wert": 4.5,
-        "zaehlt": false
-      },
-      {
-        "name": "Fabio Silva",
-        "tore": 3,
-        "vorlagen": 0,
-        "roh": 3,
-        "wert": 3.4,
         "zaehlt": false
       }
     ],
